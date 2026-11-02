@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fan and Company · Juegos para móvil</title>
+<meta name="description" content="Fan and Company es un estudio independiente que crea juegos para Android. Descubre Fábrica de Palomitas, ya disponible en Google Play.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%BF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #d6322b;
+    --butter: #ffc93c;
+    --paper: #fffaf0;
+    --ink: #2b1a2e;
+    --muted: #6b5a6e;
+    --card: #ffffff;
+    --line: #eadfca;
+    --display: "Bowlby One", "Arial Black", Impact, sans-serif;
+    --body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1e1322;
+      --ink: #fff3dc;
+      --muted: #c4b3c7;
+      --card: #2a1b2f;
+      --line: #43304a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--butter); outline-offset: 3px; border-radius: 4px; }
+
+  /* Toldo a rayas: el único elemento "llamativo" de la página */
+  .awning {
+    height: 56px;
+    background:
+      radial-gradient(circle at 50% 100%, var(--paper) 0 18px, transparent 19px) 0 100% / 72px 28px repeat-x,
+      repeating-linear-gradient(90deg, var(--red) 0 36px, #fff7e6 36px 72px);
+    box-shadow: 0 3px 0 rgba(0,0,0,.08);
+  }
+
+  .wrap { width: min(100% - 2.5rem, 62rem); margin-inline: auto; }
+
+  header.top { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0 0; gap: 1rem; flex-wrap: wrap; }
+  .brand { font-family: var(--display); font-size: 1.15rem; text-decoration: none; letter-spacing: .01em; }
+  nav { display: flex; gap: 1.25rem; font-weight: 600; }
+  nav a { text-decoration: none; color: var(--muted); }
+  nav a:hover { color: var(--red); }
+
+  .hero { padding: clamp(3rem, 9vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem); }
+  h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 8.5vw, 5.75rem);
+    line-height: 1.02;
+    letter-spacing: -.01em;
+    margin: 0 0 1.25rem;
+    max-width: 13ch;
+  }
+  .hero p { max-width: 36rem; font-size: 1.2rem; color: var(--muted); margin: 0 0 2rem; }
+
+  .btn {
+    display: inline-block;
+    padding: .85rem 1.5rem;
+    background: var(--red);
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 999px;
+    box-shadow: 0 4px 0 #9c1f1a;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 #9c1f1a; }
+  .btn.alt { background: var(--butter); color: #2b1a2e; box-shadow: 0 4px 0 #c79410; }
+  .btn.alt:hover { box-shadow: 0 2px 0 #c79410; }
+
+  section { padding: clamp(2.5rem, 6vw, 4rem) 0; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.3rem); margin: 0 0 1.5rem; line-height: 1.15; }
+
+  .game {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    align-items: center;
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 28px;
+    padding: 1.75rem;
+  }
+  .icon {
+    aspect-ratio: 1;
+    border-radius: 24%;
+    background:
+      repeating-linear-gradient(90deg, var(--red) 0 22px, #fff7e6 22px 44px) top / 100% 38% no-repeat,
+      var(--butter);
+    display: grid;
+    place-items: center;
+    font-size: 5.5rem;
+    padding-top: 20%;
+    box-shadow: 0 6px 0 rgba(0,0,0,.12);
+  }
+  .game h3 { font-family: var(--display); font-weight: 400; font-size: 1.7rem; margin: 0 0 .5rem; }
+  .tag { display: inline-block; font-size: .85rem; font-weight: 800; background: var(--butter); color: #2b1a2e; padding: .15rem .7rem; border-radius: 999px; margin-bottom: .75rem; }
+  .game p { margin: 0 0 1.25rem; color: var(--muted); max-width: 34rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+  .about { max-width: 38rem; }
+  .about p { margin: 0 0 1rem; }
+
+  .legal ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+  .legal a { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--red); }
+
+  footer { border-top: 2px solid var(--line); padding: 1.75rem 0 2.5rem; color: var(--muted); font-size: .95rem; }
+
+  @media (max-width: 640px) {
+    .game { grid-template-columns: 1fr; padding: 1.25rem; }
+    .icon { width: 140px; font-size: 3.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="awning" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#inicio">Fan and Company</a>
+    <nav aria-label="Principal">
+      <a href="#juegos">Juegos</a>
+      <a href="#estudio">Estudio</a>
+      <a href="#legal">Legal</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" id="inicio">
+      <h1>Juegos para el móvil, uno a uno.</h1>
+      <p>Somos un estudio independiente. Creamos juegos sencillos para Android, pensados para disfrutar en partidas cortas.</p>
+      <a class="btn" href="#juegos">Ver nuestros juegos</a>
+    </div>
+
+    <section id="juegos">
+      <h2>Nuestros juegos</h2>
+      <article class="game">
+        <div class="icon" role="img" aria-label="Icono de Fábrica de Palomitas">🍿</div>
+        <div>
+          <span class="tag">Disponible en Android</span>
+          <h3>Fábrica de Palomitas</h3>
+          <p>Pulsa, mejora tus máquinas y construye la fábrica de palomitas más grande. Desliza por el mundo, desbloquea nuevas máquinas y haz crecer tu producción incluso cuando no estás jugando.</p>
+          <div class="actions">
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.fanandcompany.fabricadepalomitas" target="_blank" rel="noopener">Descargar en Google Play</a>
+            <a class="btn alt" href="fabrica-privacidad/">Política de privacidad</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="estudio" class="about">
+      <h2>Sobre el estudio</h2>
+      <p>Fan and Company es un estudio pequeño que diseña y programa sus propios juegos. Nos gusta que cada partida sea rápida de entender y difícil de soltar.</p>
+      <p>Ya puedes jugar a Fábrica de Palomitas en Google Play. Seguimos trabajando en nuevos títulos y esta página se actualizará con cada lanzamiento.</p>
+    </section>
+
+    <section id="legal" class="legal">
+      <h2>Información legal</h2>
+      <ul>
+        <li><a href="fabrica-privacidad/">Política de privacidad de Fábrica de Palomitas</a></li>
+        <li><a href="app-ads.txt">app-ads.txt</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Fan and Company. Todos los derechos reservados.
+  </footer>
+</div>
+
+</body>
+</html>
